@@ -1,4 +1,6 @@
 attachments-face
 ================
 
-Attachments face is a gem to handle views in rails
+Collection of helpers to create cleaner views in rails
+
+

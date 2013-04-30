@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Felipe Tanus"]
   s.email       = ["fotanus@gmail.com"]
   s.homepage    = "http://fotanus.com"
-  s.summary     = "Collection of helpers to make cleaner views with attachments."
-  s.description = "Collection of helpers to make cleaner views with attachments."
+  s.summary     = "Collection of helpers to create cleaner views with attachments."
+  s.description = "Collection of helpers to create cleaner views with attachments."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
