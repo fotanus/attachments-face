@@ -15,3 +15,4 @@ gem "rspec"
 
 gem 'debugger'
 gem "jquery-rails"
+gem "coffee-rails"

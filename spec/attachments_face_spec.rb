@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe AttachmentsFace do
-  it 'true' do
-    true.should be true
+  context 'text_file_input' do
+    it 'exists' do
+      Rails.application.assets.find_asset("text_file_input.js.coffee").should_not be_nil
+    end
   end
 end
