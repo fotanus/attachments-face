@@ -1,6 +1,5 @@
 module AttachmentsHelper
   def multiple_attachments(name)
-    file_field_tag("#{name}[]") +
-    link_to("New attachment", "#", :data => { 'new-attachment' => true })
+    render :partial => 'attachments_face/multiple_attachments', :locals => {:name => name}
   end
 end

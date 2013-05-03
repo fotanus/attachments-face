@@ -1,23 +1,26 @@
 chooseFileText = "Choose a file"
 
 $(document).ready ->
-  $('input[type="file"]').each initializeFileInput
+  $('a[data-new-attachment]').click clickNewAttachment
 
-initializeFileInput = () ->
-  realFileInput = $(this)
-  label = $('<div class="file-input-button">'+chooseFileText+'</div>')
-  invisibleWrapper = $('<div></div>').css({height:0,width:0,'overflow':'hidden'})
-  customFileInputWrapper = $('<div class="custom-file-input"></div>')
+# Set the click event on new attachments link
+clickNewAttachment = () ->
+  name = $(this).attr("data-name")
+  copyBase = $("#attachments-face-#{name} .base .custom-file-input").clone()
+  setEvents(copyBase)
+  $("#attachments-face-#{name} .attachments").append(copyBase)
 
-  realFileInput.wrap(customFileInputWrapper).after(label).wrap(invisibleWrapper)
 
-  realFileInput.change () ->
-    fileNameList = $(this).parent().parent().find('.file-name')
+setEvents = (copyBase) ->
+  # set events
+  copyBase.find('a[data-choose-file]').click () -> $(this).parent().find('input[type=file]').click()
+  copyBase.find('a[data-remove-file]').click () -> $(this).parent().remove()
+  console.log(copyBase.find('input[type=file]'))
+  copyBase.find('input[type=file]').change () ->
+    customFileInput = $(this).parent().parent()
+    fileNameList = customFileInput.find('.file-name')
     if fileNameList.length > 0
       fileNameList.first().text($(this).val())
     else
       fileName = $('<div class="file-name">'+$(this).val()+'</div>')
-      label.after(fileName)
-
-  label.click () ->
-    label.prev().children().first().click()
+      customFileInput.find('a[data-choose-file]').after(fileName)

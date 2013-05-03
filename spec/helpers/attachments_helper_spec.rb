@@ -16,29 +16,25 @@ describe AttachmentsHelper do
       ActionView::Base.new.respond_to?('multiple_attachments').should be_true
     end
 
-    context 'input tag' do
-      it 'output one input tag' do
-        ActionView::Base.new.multiple_attachments(:name_test).should match /<input/
-      end
-
-      it 'is a file tag' do
-        ActionView::Base.new.multiple_attachments(:name_test).should match /type="file"/
-      end
-
-      it 'has the name as a list' do
-        ActionView::Base.new.multiple_attachments(:name_test).should match /name="name_test\[\]"/
-      end
+    it 'render _multiple_attachments' do
+      ActionView::Base.new.multiple_attachments(:name_test).should render_template('multiple_attachents')
     end
+
+    it 'have wrapper' do
+      ActionView::Base.new.multiple_attachments(:name_test).should match /id="attachments-face-name_test"/
+    end
+
+    it 'have base' do
+      ActionView::Base.new.multiple_attachments(:name_test).should match /class="base"/
+    end
+
+    context 'base' do
+    end
+
 
     context 'new attachment link' do
       it 'output a new attachment link' do
         ActionView::Base.new.multiple_attachments(:name_test).should match /data-new-attachment/
-      end
-    end
-
-    context 'remove attachment link' do
-      it "don't output a remove link" do
-        ActionView::Base.new.multiple_attachments(:name_test).should_not match /data-remove-attachment/
       end
     end
   end

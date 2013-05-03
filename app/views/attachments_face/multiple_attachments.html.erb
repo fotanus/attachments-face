@@ -1,0 +1,22 @@
+<% # This file holds the basic multiple attachments structure, rendered with ActiveView#multiple_attachments. %>
+
+<div id="attachments-face-<%=name%>">
+
+  <% # Base HTML to be copied to other places %>
+  <div class="base" style="width:0px;height:0px; overflow:hidden;">
+    <div class="custom-file-input">
+      <div style="height: 0px; width: 0px; overflow: hidden;">
+        <input name="<%=name%>[]" type="file"/>
+      </div>
+      <a class="file-input-button" data-choose-file>Choose a file</a>
+      <a class="file-remove-button" data-remove-file>(remove)</a>
+    </div>
+  </div>
+
+  <% # Div that holds each copy of the attachment %>
+  <div class="attachments"></div>
+
+  <% # Link that creates a new attachment on attachments div %>
+  <a href="#" data-new-attachment data-name="<%=name%>">New attachment</a>
+
+</div>
